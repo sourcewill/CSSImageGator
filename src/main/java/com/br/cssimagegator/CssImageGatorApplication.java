@@ -14,7 +14,7 @@ public class CssImageGatorApplication {
 		SpringApplication.run(CssImageGatorApplication.class, args);
 
 		// Name, Path, Scale X, Scale Y, Blur Radius, Spread Radius
-		ImageEntity imageEntity = new ImageEntity("tinbot", "img\\tinbot.png", 5, 5, 0, 2);
+		ImageEntity imageEntity = new ImageEntity("tinbot", "img/tinbot.png", 5, 5, 0, 2);
 		CSSGenerator generator = new CSSGenerator(imageEntity);
 		generator.generateCSSFile();
 

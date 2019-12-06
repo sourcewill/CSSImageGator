@@ -26,15 +26,15 @@ public class CSSGenerator {
 	}
 
 	public void generateCSSFile() {
-		Path path = Paths.get("img\\" + imageEntity.getImgName() + ".css");
+		Path path = Paths.get("img/" + imageEntity.getImgName() + ".css");
 		String text = generateCSSImage();
 		byte[] textToBytes = text.getBytes();
 		try {
 			Files.write(path, textToBytes);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			System.out.println("Error: " + ex.getMessage());
 		}
-		System.out.println("\nCSS File created: " + path);
+		System.out.println("\nCSS File created: (" + path + ")");
 
 	}
 
@@ -56,6 +56,7 @@ public class CSSGenerator {
 
 		try {
 			BufferedImage buffer = ImageIO.read(imageFile);
+			System.out.println("\nProcessing input image (" + imageEntity.getImgPath() + ")");
 			for (int i = 0; i < buffer.getWidth(); i++) {
 				for (int j = 0; j < buffer.getHeight(); j++) {
 					color = new Color(buffer.getRGB(i, j));
@@ -68,7 +69,7 @@ public class CSSGenerator {
 			str = pixels.substring(0, pixels.length() - 2);
 			str += ";";
 		} catch (IOException ex) {
-			System.out.println("Erro: " + ex.getMessage());
+			System.out.println("Error: " + ex.getMessage());
 		}
 		return str;
 	}
